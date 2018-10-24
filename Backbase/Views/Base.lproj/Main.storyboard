@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8We-NV-i0y">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Backbase View Controller-->
+        <scene sceneID="ZwC-XU-Ux8">
+            <objects>
+                <viewController id="8We-NV-i0y" customClass="BackbaseViewController" customModule="Backbase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XAf-VP-GmM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-qD-ORU">
+                                <rect key="frame" x="16" y="130" width="343" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="517" id="1uv-du-Pyp"/>
+                                    <constraint firstAttribute="width" constant="343" id="iSF-9i-lP9"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="backbaseTableViewCell" rowHeight="64" id="DYf-1B-DwQ" customClass="BackbaseTableViewCell" customModule="Backbase" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DYf-1B-DwQ" id="nWv-7F-0KN">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="63.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backbase Cities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWA-k6-YeZ">
+                                <rect key="frame" x="122" y="37" width="130" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Kcs-Ip-h6C"/>
+                                    <constraint firstAttribute="height" constant="21" id="fmc-xe-ytF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" placeholder="Please Enter City Name" translatesAutoresizingMaskIntoConstraints="NO" id="XEb-Mf-6v9">
+                                <rect key="frame" x="16" y="65" width="343" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="vKI-qD-ORU" secondAttribute="bottom" constant="20" symbolic="YES" id="4yP-wj-Qnd"/>
+                            <constraint firstItem="NWA-k6-YeZ" firstAttribute="top" secondItem="XEC-eF-tHI" secondAttribute="top" constant="17" id="9qZ-A7-AFE"/>
+                            <constraint firstItem="vKI-qD-ORU" firstAttribute="leading" secondItem="XEb-Mf-6v9" secondAttribute="leading" id="V24-O8-tYO"/>
+                            <constraint firstItem="vKI-qD-ORU" firstAttribute="trailing" secondItem="XEb-Mf-6v9" secondAttribute="trailing" id="ahu-bJ-alf"/>
+                            <constraint firstItem="NWA-k6-YeZ" firstAttribute="leading" secondItem="XEC-eF-tHI" secondAttribute="leading" constant="122" id="c6v-fe-qav"/>
+                            <constraint firstItem="vKI-qD-ORU" firstAttribute="top" secondItem="XEb-Mf-6v9" secondAttribute="bottom" constant="9" id="cNZ-W3-LUn"/>
+                            <constraint firstItem="vKI-qD-ORU" firstAttribute="leading" secondItem="XEC-eF-tHI" secondAttribute="leading" constant="16" id="i2M-Wv-1lf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XEC-eF-tHI"/>
+                    </view>
+                    <connections>
+                        <outlet property="backbaseSearchBar" destination="XEb-Mf-6v9" id="NZx-Is-NAw"/>
+                        <outlet property="backbaseTableView" destination="vKI-qD-ORU" id="Hrn-Nm-6uo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4A-rc-Ikj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13.6" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>
