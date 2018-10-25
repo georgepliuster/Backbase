@@ -26,13 +26,16 @@
                                     <constraint firstAttribute="width" constant="343" id="iSF-9i-lP9"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="backbaseTableViewCell" rowHeight="64" id="DYf-1B-DwQ" customClass="BackbaseTableViewCell" customModule="Backbase" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="backbaseTableViewCell" rowHeight="64" id="DYf-1B-DwQ" customClass="BackbaseTableViewCell" customModule="Backbase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DYf-1B-DwQ" id="nWv-7F-0KN">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="lon-ql-Xou" kind="presentation" identifier="MapKitSegue" trigger="accessoryAction" id="je4-U0-DHx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -63,6 +66,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XEC-eF-tHI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iow-MG-yw1"/>
                     <connections>
                         <outlet property="backbaseSearchBar" destination="XEb-Mf-6v9" id="NZx-Is-NAw"/>
                         <outlet property="backbaseTableView" destination="vKI-qD-ORU" id="Hrn-Nm-6uo"/>
@@ -70,7 +74,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4A-rc-Ikj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.6" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1892" y="132.68365817091455"/>
+        </scene>
+        <!--Map Kit View Controller-->
+        <scene sceneID="3hS-KW-Wj2">
+            <objects>
+                <viewController id="lon-ql-Xou" customClass="MapKitViewController" customModule="Backbase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YNl-Jc-hof">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4V5-ap-H4D">
+                                <rect key="frame" x="0.0" y="117" width="375" height="550"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="4uL-jW-jss"/>
+                                    <constraint firstAttribute="height" constant="603" id="KJ0-0X-Yo8"/>
+                                </constraints>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="suQ-jU-RCa">
+                                <rect key="frame" x="0.0" y="32" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="TIr-Zc-tTZ">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="4jv-ob-emT">
+                                            <connections>
+                                                <action selector="mapKitCancelButtonPressed:" destination="lon-ql-Xou" id="dw0-Nz-gbm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4V5-ap-H4D" firstAttribute="leading" secondItem="uge-xS-N5Z" secondAttribute="leading" id="dDx-eX-sKL"/>
+                            <constraint firstItem="4V5-ap-H4D" firstAttribute="top" secondItem="uge-xS-N5Z" secondAttribute="top" id="tDX-Cv-bFZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uge-xS-N5Z"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapKitNavBar" destination="suQ-jU-RCa" id="NfX-nY-FeG"/>
+                        <outlet property="mapView" destination="4V5-ap-H4D" id="2AS-ci-v1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMg-iG-4au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2912.8000000000002" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

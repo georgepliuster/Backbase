@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8210F492180D4600038EAE7 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8210F482180D4600038EAE7 /* CityInfo.swift */; };
+		C8210F4B2180D9B10038EAE7 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8210F4A2180D9B10038EAE7 /* MapKitViewController.swift */; };
 		C8450987217F758200751930 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8450986217F758200751930 /* AppDelegate.swift */; };
 		C845098C217F758200751930 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C845098A217F758200751930 /* Main.storyboard */; };
 		C845098E217F758400751930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C845098D217F758400751930 /* Assets.xcassets */; };
@@ -15,6 +17,7 @@
 		C84509A9217F777200751930 /* BackbaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84509A8217F777200751930 /* BackbaseViewController.swift */; };
 		C84509AE217F7B2900751930 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = C84509AD217F7B2900751930 /* cities.json */; };
 		C85790AE217FC1730057E2C0 /* BackbaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85790AD217FC1730057E2C0 /* BackbaseTableViewCell.swift */; };
+		C8F0C401218105E8002BC3F0 /* CityLocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F0C400218105E8002BC3F0 /* CityLocationInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C8210F482180D4600038EAE7 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		C8210F4A2180D9B10038EAE7 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		C8450983217F758200751930 /* Backbase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backbase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8450986217F758200751930 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C845098B217F758200751930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		C84509A8217F777200751930 /* BackbaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseViewController.swift; sourceTree = "<group>"; };
 		C84509AD217F7B2900751930 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		C85790AD217FC1730057E2C0 /* BackbaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseTableViewCell.swift; sourceTree = "<group>"; };
+		C8F0C400218105E8002BC3F0 /* CityLocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocationInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 		C84509AA217F777F00751930 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C8210F482180D4600038EAE7 /* CityInfo.swift */,
+				C8F0C400218105E8002BC3F0 /* CityLocationInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				C84509A8217F777200751930 /* BackbaseViewController.swift */,
+				C8210F4A2180D9B10038EAE7 /* MapKitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,8 +246,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C85790AE217FC1730057E2C0 /* BackbaseTableViewCell.swift in Sources */,
+				C8210F4B2180D9B10038EAE7 /* MapKitViewController.swift in Sources */,
 				C84509A9217F777200751930 /* BackbaseViewController.swift in Sources */,
+				C8210F492180D4600038EAE7 /* CityInfo.swift in Sources */,
 				C8450987217F758200751930 /* AppDelegate.swift in Sources */,
+				C8F0C401218105E8002BC3F0 /* CityLocationInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

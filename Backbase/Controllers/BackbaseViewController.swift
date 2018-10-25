@@ -24,6 +24,8 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
     var sortedKeysArray = [String]()
     var searching:Bool! = false
     var filtered:[String] = []
+    var cityInfo = CityInfo()
+    var selectedCityState = String()
     
     var citiesSearchResultsList: [String] = []
     
@@ -38,7 +40,6 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
                 if let object = json as? [Any] {
                     // json is an array
                     jsonObjectArray = object
-//                    print("READCITIESJSON: OBJECT: \(object)")
                 } else {
                     print("JSON is invalid")
                 }
@@ -91,11 +92,9 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: View Cycle Methods ---------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.backbaseTableView.dataSource = self
         self.backbaseTableView.delegate = self
         self.backbaseSearchBar.delegate = self // as? UISearchBarDelegate
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,7 +134,6 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "backbaseTableViewCell", for: indexPath)
         
-    
         cell.textLabel?.text = citiesSearchResultsList[(indexPath as NSIndexPath).row]
         // Configure the cell...
         return cell
@@ -144,24 +142,54 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: UITableViewDelegate -----------------------------------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        selectedCityState = citiesSearchResultsList[(indexPath as NSIndexPath).row]
+        self.performSegue(withIdentifier: "MapKitSegue", sender: selectedCityState)
+        backbaseTableView.deselectRow(at: indexPath, animated: true)
     }
     
     
-    /************/
+
     
     // MARK: - Navigation  ------------------------------------------------------
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    /*
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        super.prepare(for: segue, sender: sender)
+        
+        let cityState = selectedCityState
+        let cityStateString = cityStateJson[cityState]
+        let cityInfoJson = convertToDictionary(text: cityStateString!)
+        
+        let cityName = cityInfoJson!["name"] as! String
+        let stateName = cityInfoJson!["stateName"] as! String
+        let coordJson = cityInfoJson!["coord"] as! [String: Any]
+
+        let lat = coordJson["lat"] as! Double
+        let lon = coordJson["lon"] as! Double
+        
+        let vc = segue.destination as! MapKitViewController
+        self.cityInfo = CityInfo(name: cityName, country: stateName, lat: lat, lon: lon)
+
+        vc.myCityInfo = self.cityInfo
+
     }
-    */
+ 
     
     
     // MARK: Support Methods ----------------------------------------------------
-    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
 
 
 
@@ -173,6 +201,7 @@ class BackbaseViewController: UIViewController, UITableViewDelegate, UITableView
 extension BackbaseViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        citiesSearchResultsList = sortedKeysArray
         if (searchText == "") {
             searching = false
         }
@@ -202,12 +231,11 @@ extension BackbaseViewController: UISearchBarDelegate {
     public func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         backbaseSearchBar.showsScopeBar = false
         backbaseSearchBar.sizeToFit()
-        //        stepOneSearchBar.setShowsCancelButton(false, animated: true)
+        backbaseSearchBar.setShowsCancelButton(false, animated: true)
         return true
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        scopeIndex = selectedScope
         backbaseSearchBar.becomeFirstResponder()
         self.backbaseTableView!.reloadData()
     }
@@ -221,7 +249,6 @@ extension BackbaseViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.backbaseSearchBar.endEditing(true)
         backbaseSearchBar.resignFirstResponder()
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -230,6 +257,7 @@ extension BackbaseViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         backbaseSearchBar.text = ""
+        self.backbaseTableView!.reloadData()
     }
     
 }   // end extension
